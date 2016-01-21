@@ -1,11 +1,11 @@
 import os
-import cv_algorithms
+import cv_watershed
 from flask import Flask
 from flask import *
 from werkzeug import secure_filename
 
 UPLOAD_FOLDER = 'images'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'tif'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -27,7 +27,7 @@ def upload_file():
             filename = secure_filename(f.filename)
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             f.save(file_path)
-            json_dict = dict(num_circles = cv_algorithms.count_circles(file_path))
+            json_dict = dict(num_circles = cv_watershed.count_circles(file_path))
             return jsonify(**json_dict)
     return resp
 

@@ -2,3 +2,4 @@ numpy
 scipy
 pillow
 flask
+scikit-image
