@@ -5,7 +5,7 @@ from flask import *
 from werkzeug import secure_filename
 
 UPLOAD_FOLDER = 'images'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'tif'])
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'tif', 'tiff'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -33,5 +33,3 @@ def upload_file():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
